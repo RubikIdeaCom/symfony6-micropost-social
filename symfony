@@ -1,0 +1,24 @@
+Description:
+  View the status of a set of migrations.
+
+Usage:
+  doctrine:migrations:status [options]
+  status
+
+Options:
+      --configuration=CONFIGURATION  The path to a migrations configuration file. [default: any of migrations.{php,xml,json,yml,yaml}]
+      --em=EM                        The name of the entity manager to use.
+      --conn=CONN                    The name of the connection to use.
+  -h, --help                         Display help for the given command. When no command is given display help for the list command
+  -q, --quiet                        Do not output any message
+  -V, --version                      Display this application version
+      --ansi|--no-ansi               Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction               Do not ask any interactive question
+  -e, --env=ENV                      The Environment name. [default: "dev"]
+      --no-debug                     Switch off debug mode.
+  -v|vv|vvv, --verbose               Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
+Help:
+  The doctrine:migrations:status command outputs the status of a set of migrations:
+  
+      bin/console doctrine:migrations:status

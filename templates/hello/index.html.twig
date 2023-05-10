@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div>
+    {% if messages|length > 0 %}
+        {% for key, message in messages|slice(0, limit) %}
+        <div>
+            <a href="{{ path('app_show_one', {id:key}) }}"> {{message.message}} </a>
+        </div>
+
+        {{ include('hello/_message.html.twig', {current_message: message})}}
+        {% endfor %}
+    {% else %}
+        <div> There is nothing to show! </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+{% block title %}Title got changed!!!{% endblock %}
+
+
