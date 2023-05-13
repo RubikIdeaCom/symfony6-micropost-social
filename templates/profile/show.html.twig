@@ -16,4 +16,9 @@
     </div>
 
 {% endif %}
+
+<div class="ml-16 text-2xl">
+    {{include('follower/_follow_button.html.twig', {userToFollow: user})}}
+</div>
+
 {% endblock %}
