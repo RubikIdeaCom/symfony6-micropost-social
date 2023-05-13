@@ -16,8 +16,8 @@ class FollowerController extends AbstractController
     {
         /** @var User $currentUser */
         $currentUser = $this->getUser();
-
-        if($userToFollow->getId() ==! $currentUser->getId()) {
+        
+        if($userToFollow->getId() !== $currentUser->getId()) {
             $currentUser->follow($userToFollow);
             $doctrine->getManager()->flush();
         }
@@ -33,7 +33,7 @@ class FollowerController extends AbstractController
         /** @var User $currentUser */
         $currentUser = $this->getUser();
 
-        if($userToUnfollow->getId() ==! $currentUser->getId()) {
+        if($userToUnfollow->getId() !== $currentUser->getId()) {
             $currentUser->unfollow($userToUnfollow);
             $doctrine->getManager()->flush();
         }
