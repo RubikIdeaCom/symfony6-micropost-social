@@ -50,9 +50,8 @@ class MicroPostRepository extends ServiceEntityRepository
         )->getQuery()->getResult();
     }
 
-    public function findAllByAuthor(
-        int | User $author
-    ): array {
+    public function findAllByAuthor(int | User $author): array
+    {
         return $this->findAllQuery(
             withComments: true,
             withLikes: true,
@@ -66,9 +65,8 @@ class MicroPostRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findAllByAuthors(
-        Collection|array $authors
-    ): array {
+    public function findAllByAuthors(Collection|array $authors): array
+    {
         return $this->findAllQuery(
             withComments: true,
             withLikes: true,
@@ -104,12 +102,8 @@ class MicroPostRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    private function findAllQuery(
-        bool $withComments = false,
-        bool $withLikes = false,
-        bool $withAuthors = false,
-        bool $withProfiles = false,
-    ): QueryBuilder {
+    private function findAllQuery(bool $withComments = false, bool $withLikes = false, bool $withAuthors = false, bool $withProfiles = false, ): QueryBuilder
+    {
         $query = $this->createQueryBuilder('p');
 
         if ($withComments) {
@@ -160,28 +154,3 @@ class MicroPostRepository extends ServiceEntityRepository
     //        ;
     //    }
 }
-
-//    /**
-//     * @return MicroPost[] Returns an array of MicroPost objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('m.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?MicroPost
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
