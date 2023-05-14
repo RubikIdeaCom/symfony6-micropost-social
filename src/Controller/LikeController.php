@@ -18,7 +18,7 @@ class LikeController extends AbstractController
     {
         $currentUser = $this->getUser();
         $post->addLikedBy($currentUser);
-        $posts->save($post, true);
+        $posts->add($post, true);
 
         return $this->redirect($request->headers->get('referer'));
     }
@@ -28,7 +28,7 @@ class LikeController extends AbstractController
     {
         $currentUser = $this->getUser();
         $post->removeLikedBy($currentUser);
-        $posts->save($post, true);
+        $posts->add($post, true);
 
         return $this->redirect($request->headers->get('referer'));
     }
