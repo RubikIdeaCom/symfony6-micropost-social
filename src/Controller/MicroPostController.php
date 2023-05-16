@@ -160,7 +160,7 @@ class MicroPostController extends AbstractController
             $comment = $form->getData();
             $comment->setPost($post);
             $comment->setAuthor($this->getUser());
-            $comments->add($comment, true);
+            $comments->save($comment, true);
 
             // Add a flash
             $this->addFlash(

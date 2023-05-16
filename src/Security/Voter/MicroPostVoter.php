@@ -14,7 +14,6 @@ class MicroPostVoter extends Voter
 
     public function __construct(private Security $security)
     {
-        
     }
 
     protected function supports(string $attribute, mixed $subject): bool
@@ -51,7 +50,10 @@ class MicroPostVoter extends Voter
                 return $isAuth && ($subject->getAuthor()->getId() === $user->getId()) || $this->security->isGranted('ROLE_EDITOR');
                 
             case MicroPost::VIEW:
-                return true;
+                if(!$subject->isExtraPrivacy()) {
+                    return true;
+                }
+                return $isAuth && ($subject->getAuthor()->getId() == $user->getId() || $subject->getAuthor()->getFollows()->contains($user));
         }
 
         return false;
